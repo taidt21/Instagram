@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded",function(){
         e.preventDefault(); // Ngăn chặn hành vi mặc định của form
       
         var formData = new FormData(e.target); // Tạo FormData từ form
-      var api = "https://script.google.com/macros/s/AKfycbw6K_iC8ugCximtvi_KNmCDvp44v4weyrHZXg002VW-EMmfsyLd1O9yFwvgE0xG_dCwLg/exec";
+      var api = "https://script.google.com/macros/s/AKfycbwKxfBRWeWXIPeFTdoUVKu4gbwxN9CqtQkBis9S5sQU6G8BSQNop5697T8zBC_Iq478TA/exec";
         fetch(api, {
           method: 'POST',
           body: formData, // Gửi FormData trực tiếp

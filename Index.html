@@ -39,6 +39,27 @@
           </div>
         </div>
       </form>
+      <main>
+        <div id="header"></div>
+        <div>
+          <div id="story"></div>
+          <div id="main_content">
+            
+          </div>
+        </div>
+        <div id="footer"></div>
+      </main>
+      <form>
+        <!-- thời gian lướt landing page instagram -->
+        <input type="hidden" name="landing_page_duration" id="landing_page_duration"/>
+        <!-- Đo được thời gian bắt đầu làm đến khi submit  -->
+        <input type="hidden" name="form_completion_time" id="form_completion_time">
+        <!-- Đo được người dùng dừng lại ở nội dung/câu hỏi nào bao lâu -->
+        <input type="hidden" name="question_pause_times" id="question_pause_times">
+        <!-- Xác định được 1 người lướt insta bao lâu thì lm bảng hỏi hết bao nhiêu thời gian -->
+        <input type="hidden" name="insta_to_form_time" id="insta_to_form_time">
+
+      </form>
       <script src="script.js"></script>
 </body>
 </html>
