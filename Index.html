@@ -1,65 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <form class="card" id="myForm">
-        <h2>Contact Us</h2>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label> Name</label>
-              <input type="text" name="name">
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label>Email</label>
-              <input type="text" name="email">
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label>Phone</label>
-              <input type="text" name="phone">
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label>Message</label>
-              <textarea name="message"></textarea>
-            </div>
-          </div>
-          <div class="col">
-            <input type="submit" value="Submit">
-          </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div id="header">
+        <div class="header_col_left">
+          <a href="/">
+            <img class="logo_header" src="/IMG/logo_insta.svg"
+              alt="instagram" />
+          </a>
         </div>
-      </form>
-      <main>
-        <div id="header"></div>
-        <div>
-          <div id="story"></div>
-          <div id="main_content">
-            
-          </div>
+        <div class="header_col_right">
+          <button class="header_col_right_btn_nav">
+            <img src="/IMG/add_article.svg" alt />
+          </button>
+          <button class="header_col_right_btn_nav notify">
+            <img src="/IMG/notify_heal.svg" alt />
+          </button>
         </div>
-        <div id="footer"></div>
-      </main>
-      <form>
-        <!-- thời gian lướt landing page instagram -->
-        <input type="hidden" name="landing_page_duration" id="landing_page_duration"/>
-        <!-- Đo được thời gian bắt đầu làm đến khi submit  -->
-        <input type="hidden" name="form_completion_time" id="form_completion_time">
-        <!-- Đo được người dùng dừng lại ở nội dung/câu hỏi nào bao lâu -->
-        <input type="hidden" name="question_pause_times" id="question_pause_times">
-        <!-- Xác định được 1 người lướt insta bao lâu thì lm bảng hỏi hết bao nhiêu thời gian -->
-        <input type="hidden" name="insta_to_form_time" id="insta_to_form_time">
-
-      </form>
-      <script src="script.js"></script>
-</body>
+      </div>
+      <div>
+        <div id="story">
+          <ul id="story_list"></ul>
+        </div>
+        <div id="main_content"></div>
+      </div>
+      <div id="footer">
+        <ul class="footer_list">
+          <li class="footer_list_item">
+            <button class="footer_list_item_btn"><img src="/IMG/home_footer.svg"
+                alt
+                class="footer_list_item_img" /></button>
+          </li>
+          <li class="footer_list_item">
+            <button class="footer_list_item_btn"><img
+                src="/IMG/search_footer.svg" alt
+                class="footer_list_item_img" /></button>
+          </li>
+          <li class="footer_list_item">
+            <button class="footer_list_item_btn"><img src="/IMG/reel_footer.svg"
+                alt
+                class="footer_list_item_img" /></button>
+          </li>
+          <li class="footer_list_item">
+            <button class="footer_list_item_btn"><img
+                src="/IMG/messenger_footer.svg" alt
+                class="footer_list_item_img" /></button>
+          </li>
+          <li class="footer_list_item">
+            <button class="footer_list_item_btn"><img class="footer_avatar"
+                src="https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-1/465999819_1797030581041871_5626206262976515636_n.jpg?stp=dst-jpg_s200x200&_nc_cat=110&ccb=1-7&_nc_sid=0ecb9b&_nc_ohc=sXADCdVihvEQ7kNvgFG6XOu&_nc_zt=24&_nc_ht=scontent.fhan17-1.fna&_nc_gid=A9XFav7HR_sRo1JJJXz964W&oh=00_AYB-cuy0aOsPpOj6RJIm8gcfbEICkiDmXp3IXHZSuXU30g&oe=673FA238"
+                alt
+                class="footer_list_item_img" /></button>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <form id="myForm">
+      <!-- thời gian lướt landing page instagram -->
+      <input type="hidden" name="landing_page_duration"
+        id="landing_page_duration" />
+      <!-- Đo được thời gian bắt đầu làm đến khi submit  -->
+      <input type="hidden" name="form_completion_time"
+        id="form_completion_time" />
+      <!-- Đo được người dùng dừng lại ở nội dung/câu hỏi nào bao lâu -->
+      <input type="hidden" name="question_pause_times"
+        id="question_pause_times" />
+      <!-- Xác định được 1 người lướt insta bao lâu thì lm bảng hỏi hết bao nhiêu thời gian -->
+      <input type="hidden" name="insta_to_form_time" id="insta_to_form_time" />
+    </form>
+    <script src="script.js"></script>
+  </body>
 </html>
