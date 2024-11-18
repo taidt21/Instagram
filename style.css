@@ -4,11 +4,14 @@
   box-sizing: border-box;
   font-family: 'roboto';
 }
-
+html{
+  overflow-x: hidden;
+}
 body {
   max-width: 375px;
   margin: auto;
   padding: 16px;
+  overflow-x: hidden;
 }
 
 img {
@@ -34,8 +37,11 @@ button {
   z-index: 5;
   padding: 0 16px;
   background: #fff;
+  border-bottom: 1px solid rgb(219, 219, 219);
 }
-
+#header + div{
+  margin-top: 36px;
+}
 .logo_header {
   width: 115px;
   height: 42px;
@@ -78,6 +84,9 @@ main {
   z-index: 5;
   background: #fff;
 }
+#footer_wrapper{
+  min-height: 90px;
+}
 
 .footer_list {
   display: flex;
@@ -90,4 +99,113 @@ main {
 
 .footer_avatar {
   border-radius: 50%;
+}
+
+#story_list{
+  display: flex;
+  background: rgba(245, 245, 245);
+  padding: 8px 16px;
+  margin: 0 -16px;
+  border-bottom: 1px solid rgb(219, 219, 219);
+}
+.story_list_item_avatar{
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  padding: 3px;
+}
+.story_list_item_button{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+.story_list_item{
+  min-width: 80px;
+  position: relative;
+}
+.add_story_icon{
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  top: 40px;
+  right: 20px;
+  z-index: 2;
+  display: none;
+}
+
+.story_list_item_name{
+  margin-top: 8px;
+}
+.avatarCanvas{
+  position: absolute;
+  z-index: 1;
+  top:-1px;
+  left:50%;
+  transform: translateX(-50%);
+}
+.article_header{
+  display: flex;
+  justify-content: space-between;
+  min-height: 56px;
+  align-items: center;
+}
+.article_header_author{
+  display: flex;
+  align-items: center;
+}
+.article_header_author_avatar{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+.article_header_author_name{
+  font-weight: 600;
+}
+.article_body_media{
+    aspect-ratio: 4/5;
+    margin: 0 -16px;
+}
+.article_body_media > div {
+  height: 100%;
+}
+.article_body_media .swiper-slide img {
+  height: 100%;
+  object-fit: cover;
+}
+.article_body_action{
+  display: flex;
+  align-items: center;
+  margin: 4px -8px;
+}
+.article_body_action button{
+  padding: 8px;
+}
+.article_body_action button:last-child{
+  margin-left: auto;
+}
+.article_body_content{
+  /* display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden; */
+  margin-top: 8px;
+}
+.article_body_like{
+  font-size: 14px;
+  font-weight: 600;
+}
+.article_body_readmore{
+  font-size: 14px;
+  color: rgba(115, 115, 115);
+  line-height: 18px;
+}
+.article_body_time{
+  color: rgba(115, 115, 115);
+  font-size: 14px;
+  margin-top: 4px;
 }

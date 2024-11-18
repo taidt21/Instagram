@@ -3,12 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Instagram</title>
+    <link rel="icon" href="/Img/logo_preview.svg" type="image/svg" sizes="16x16">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet" />
+      <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -33,38 +38,45 @@
         <div id="story">
           <ul id="story_list"></ul>
         </div>
-        <div id="main_content"></div>
+        <div id="main_content">
+          <div id="Articles">
+
+          </div>
+        </div>
       </div>
-      <div id="footer">
-        <ul class="footer_list">
-          <li class="footer_list_item">
+      <div id="footer_wrapper">
+
+        <div id="footer">
+          <ul class="footer_list">
+            <li class="footer_list_item">
             <button class="footer_list_item_btn"><img src="/IMG/home_footer.svg"
-                alt
-                class="footer_list_item_img" /></button>
-          </li>
-          <li class="footer_list_item">
-            <button class="footer_list_item_btn"><img
+              alt
+              class="footer_list_item_img" /></button>
+            </li>
+            <li class="footer_list_item">
+              <button class="footer_list_item_btn"><img
                 src="/IMG/search_footer.svg" alt
                 class="footer_list_item_img" /></button>
-          </li>
-          <li class="footer_list_item">
-            <button class="footer_list_item_btn"><img src="/IMG/reel_footer.svg"
+              </li>
+              <li class="footer_list_item">
+                <button class="footer_list_item_btn"><img src="/IMG/reel_footer.svg"
+                  alt
+                  class="footer_list_item_img" /></button>
+                </li>
+                <li class="footer_list_item">
+                  <button class="footer_list_item_btn"><img
+                    src="/IMG/messenger_footer.svg" alt
+                    class="footer_list_item_img" /></button>
+                  </li>
+                  <li class="footer_list_item">
+                    <button class="footer_list_item_btn"><img class="footer_avatar"
+                      src="https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-1/465999819_1797030581041871_5626206262976515636_n.jpg?stp=dst-jpg_s200x200&_nc_cat=110&ccb=1-7&_nc_sid=0ecb9b&_nc_ohc=sXADCdVihvEQ7kNvgFG6XOu&_nc_zt=24&_nc_ht=scontent.fhan17-1.fna&_nc_gid=A9XFav7HR_sRo1JJJXz964W&oh=00_AYB-cuy0aOsPpOj6RJIm8gcfbEICkiDmXp3IXHZSuXU30g&oe=673FA238"
                 alt
                 class="footer_list_item_img" /></button>
-          </li>
-          <li class="footer_list_item">
-            <button class="footer_list_item_btn"><img
-                src="/IMG/messenger_footer.svg" alt
-                class="footer_list_item_img" /></button>
-          </li>
-          <li class="footer_list_item">
-            <button class="footer_list_item_btn"><img class="footer_avatar"
-                src="https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-1/465999819_1797030581041871_5626206262976515636_n.jpg?stp=dst-jpg_s200x200&_nc_cat=110&ccb=1-7&_nc_sid=0ecb9b&_nc_ohc=sXADCdVihvEQ7kNvgFG6XOu&_nc_zt=24&_nc_ht=scontent.fhan17-1.fna&_nc_gid=A9XFav7HR_sRo1JJJXz964W&oh=00_AYB-cuy0aOsPpOj6RJIm8gcfbEICkiDmXp3IXHZSuXU30g&oe=673FA238"
-                alt
-                class="footer_list_item_img" /></button>
-          </li>
-        </ul>
-      </div>
+              </li>
+            </ul>
+          </div>
+        </div>
     </main>
     <form id="myForm">
       <!-- thời gian lướt landing page instagram -->
@@ -79,6 +91,7 @@
       <!-- Xác định được 1 người lướt insta bao lâu thì lm bảng hỏi hết bao nhiêu thời gian -->
       <input type="hidden" name="insta_to_form_time" id="insta_to_form_time" />
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
