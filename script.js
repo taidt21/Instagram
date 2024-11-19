@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const Story = [
     {
       Name: "hziyy03",
-      Avatar: "/Instagram/image/avatar_footer.jpg",
+      Avatar: "/image/avatar_footer.jpg",
       Time: "2 giờ",
       MusicName: " Lady Gaga - Close To You",
       Media: "",
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let Story_list_item = `<li class="story_list_item">
                            <button class="story_list_item_button">
                               <img class="story_list_item_avatar" src="https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-1/465999819_1797030581041871_5626206262976515636_n.jpg?stp=dst-jpg_s200x200&_nc_cat=110&ccb=1-7&_nc_sid=0ecb9b&_nc_ohc=sXADCdVihvEQ7kNvgFG6XOu&_nc_zt=24&_nc_ht=scontent.fhan17-1.fna&_nc_gid=A9XFav7HR_sRo1JJJXz964W&oh=00_AYB-cuy0aOsPpOj6RJIm8gcfbEICkiDmXp3IXHZSuXU30g&oe=673FA238" alt="" />
-                              <img class="add_story_icon" src="/Instagram/image/add_story.svg" alt="" />
+                              <img class="add_story_icon" src="/image/add_story.svg" alt="" />
                               <canvas class="avatarCanvas" width="${sizeBorder}" height="${sizeBorder}"></canvas>
                               <span class="story_list_item_name">Tin của bạn</span>
                           </button>
@@ -98,7 +98,7 @@ ctx.fill();
   const thumb = "https://instagram.fhan17-1.fna.fbcdn.net/v/t39.30808-6/465697836_521005890908850_6768022630801790702_n.jpg?stp=dst-jpg_e35_s720x720&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4yMDQ4eDIwNDguc2RyLmYzMDgwOC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fhan17-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=8o5Cpkw6v1YQ7kNvgGoO4Oy&_nc_gid=75cd6e6bfa954eadb8befcfaa4413b4c&edm=APNOSGoAAAAA&ccb=7-5&ig_cache_key=MzQ5Mzg5NTQwNzQyMTMzNTY2MQ%3D%3D.3-ccb7-5&oh=00_AYDaIbpU9qjlK43vim-8Aaau07Lp0PqFxou7JkcTZ7QylQ&oe=6740DA52&_nc_sid=ca40e6";
   const Articles = [
     {
-      Avatar : "/Instagram/image/avatar_footer.jpg",
+      Avatar : "/image/avatar_footer.jpg",
       Name : "asiamystika",
       Type : "Image",
       Media : [thumb,thumb,thumb,thumb],
@@ -146,16 +146,16 @@ ctx.fill();
                       </div>
                       <div class="article_body_action">
                         <button>
-                          <img src="/Instagram/image/notify_heal.svg" />
+                          <img src="/image/notify_heal.svg" />
                         </button>
                         <button>
-                          <img src="/Instagram/image/comment.svg" />
+                          <img src="/image/comment.svg" />
                         </button>
                         <button>
-                          <img src="/Instagram/image/share.svg" />
+                          <img src="/image/share.svg" />
                         </button>
                         <button>
-                          <img src="/Instagram/image/save.svg" />
+                          <img src="/image/save.svg" />
                         </button>
                       </div>
                       <div class="article_body_like">${item.Like} lượt thích</div>
@@ -189,4 +189,21 @@ articles.forEach(article => {
     });
   }
 });
+
+// Lấy hostname hiện tại
+const currentHost = window.location.hostname;
+// Kiểm tra nếu đang chạy trên domain GitHub
+if (currentHost.includes("github.io")) {
+    // Lấy tất cả thẻ img
+    const imgElements = document.querySelectorAll("img");
+    imgElements.forEach(img => {
+        // Lấy src hiện tại của thẻ img
+        const currentSrc = img.getAttribute("src");
+        // Thêm "" vào trước src nếu chưa có
+        if (currentSrc && !currentSrc.startsWith("")) {
+            img.setAttribute("src", "" + currentSrc);
+        }
+    });
+}
+
 });
