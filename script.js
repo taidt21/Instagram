@@ -192,14 +192,10 @@ articles.forEach(article => {
 
 // Lấy hostname hiện tại
 const currentHost = window.location.hostname;
-console.log(currentHost)
-
 // Kiểm tra nếu đang chạy trên domain GitHub
 if (currentHost.includes("github.io")) {
-  console.log(true)
     // Lấy tất cả thẻ img
     const imgElements = document.querySelectorAll("img");
-    
     imgElements.forEach(img => {
         // Lấy src hiện tại của thẻ img
         const currentSrc = img.getAttribute("src");
