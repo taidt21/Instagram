@@ -192,17 +192,23 @@ articles.forEach(article => {
 
 // Lấy hostname hiện tại
 const currentHost = window.location.hostname;
+console.log(currentHost)
+
 // Kiểm tra nếu đang chạy trên domain GitHub
 if (currentHost.includes("github.io")) {
     // Lấy tất cả thẻ img
     const imgElements = document.querySelectorAll("img");
+    
     imgElements.forEach(img => {
         // Lấy src hiện tại của thẻ img
         const currentSrc = img.getAttribute("src");
-        // Thêm "" vào trước src nếu chưa có
-        if (currentSrc && !currentSrc.startsWith("")) {
-            img.setAttribute("src", "" + currentSrc);
-        }
+         // Kiểm tra nếu src không bắt đầu bằng 'http://' hoặc 'https://'
+        if (currentSrc && !currentSrc.match(/^https?:\/\//i)) {
+          // Thêm '/Instagram' vào trước src nếu chưa có
+          if (!currentSrc.startsWith("/Instagram")) {
+              img.setAttribute("src", "/Instagram" + currentSrc);
+          }
+      }
     });
 }
 
