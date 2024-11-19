@@ -224,6 +224,7 @@ const currentHost = window.location.hostname;
 if (currentHost.includes("github.io")) {
     // Lấy tất cả thẻ img
     const imgElements = document.querySelectorAll("img");
+    const vidElements = document.querySelectorAll("img");
     imgElements.forEach(img => {
         // Lấy src hiện tại của thẻ img
         const currentSrc = img.getAttribute("src");
@@ -233,6 +234,14 @@ if (currentHost.includes("github.io")) {
           if (!currentSrc.startsWith("/Instagram")) {
               img.setAttribute("src", "/Instagram" + currentSrc);
           }
+      }
+    });
+    vidElements.forEach(vid =>{
+      const currentSrc = vid.children.getAttribute("src");
+      if(currentSrc && !currentSrc.match(/^https?:\/\//i)){
+        if(!currentSrc.startsWith("/Instagram")){
+          vid.children.setAttribute("src","/Instagram" + currentSrc)
+        }
       }
     });
 }
