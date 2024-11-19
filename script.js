@@ -196,6 +196,7 @@ console.log(currentHost)
 
 // Kiểm tra nếu đang chạy trên domain GitHub
 if (currentHost.includes("github.io")) {
+  console.log(true)
     // Lấy tất cả thẻ img
     const imgElements = document.querySelectorAll("img");
     
