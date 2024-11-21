@@ -148,9 +148,25 @@ ctx.fill();
       </button>
     </div>` :
      `
-          <video controls>
+      <div class="article_body_media_video">
+          <img class="play_icon" src='/image/play.svg' loading="lazy" />
+          <video class='custom_video play-pause' muted loop playsinline>
             <source src="${item.Media}" type="video/mp4">
+            Your browser does not support the video tag.
           </video>
+          <div class="video-controls">
+          <button class="mute-unmute control_item">
+          <img class='mute_icon' src="/image/mute.svg" loading="lazy" alt="" />
+          </button>
+          
+         
+            <input type="range" class="seek-bar control_item custom-range" value="0" step="0.1">
+            
+            <span class="current-time time_number">0:00</span> <span class="duration time_number">0:00</span>
+            
+          
+            </div>
+      </div>
      `;
     Article += `<article class="Article">
                     <div class="article_header">
@@ -246,7 +262,113 @@ if (currentHost.includes("github.io")) {
     });
 }
 
+const videos = document.querySelectorAll(".custom_video");
+ // IntersectionObserver setup
+ const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const video = entry.target;
 
+      // Kiểm tra tỷ lệ hiển thị có đạt >= 70% không
+      if (entry.intersectionRatio >= 0.7) {
+        video.play(); // Phát video
+      } else {
+        video.pause(); // Tạm dừng video
+      }
+    });
+  },
+  {
+    threshold: Array.from({ length: 11 }, (_, i) => i * 0.1), // Tạo các mức threshold từ 0.0 đến 1.0
+  }
+);
+
+// Gắn observer cho mỗi video
+videos.forEach((video) => {
+  observer.observe(video);
+});
+
+  // Lấy tất cả các container video
+  const videoContainers = document.querySelectorAll(".article_body_media_video");
+
+  videoContainers.forEach((container) => {
+    const video = container.querySelector(".custom_video");
+    const muteUnmuteBtn = container.querySelector(".mute-unmute");
+    const playPauseBtn = container.querySelector(".play-pause");
+    const seekBar = container.querySelector(".seek-bar");
+    const currentTimeSpan = container.querySelector(".current-time");
+    const durationSpan = container.querySelector(".duration");
+    const playIcon = container.querySelector('.play_icon');
+    // Play/Pause button
+    playPauseBtn.addEventListener("click", () => {
+      if (video.paused) {
+        video.play();
+        playIcon.style.display = 'none'
+      } else {
+        video.pause();
+        playIcon.style.display = 'block'
+      }
+    });
+
+    // Mute/Unmute button
+    muteUnmuteBtn.addEventListener("click", () => {
+      video.muted = !video.muted;
+      const currentSrc =  muteUnmuteBtn.querySelector('img').getAttribute('src');
+      let updatedSrc = null;
+      if(video.muted ){
+         updatedSrc = currentSrc.replace('/unmute', '/mute');
+      }else{
+        updatedSrc = currentSrc.replace('/mute','/unmute');
+      }
+      muteUnmuteBtn.querySelector('img').setAttribute('src',updatedSrc);
+    });
+
+    // // Update Seek Bar and Current Time
+    let animationFrameId;
+
+    // Hàm cập nhật thanh tiến trình một cách mượt mà
+    function updateSeekBar() {
+      if (video.duration) {
+        const progress = (video.currentTime / video.duration) * 100;
+        seekBar.value = progress;
+        currentTimeSpan.textContent = formatTime(video.currentTime);
+      }
+      if (!video.paused && !video.ended) {
+        animationFrameId = requestAnimationFrame(updateSeekBar);
+      }
+    }
+  
+    // Bắt đầu cập nhật khi video phát
+    video.addEventListener("play", () => {
+      animationFrameId = requestAnimationFrame(updateSeekBar);
+    });
+  
+    // Dừng cập nhật khi video tạm dừng hoặc kết thúc
+    video.addEventListener("pause", () => {
+      cancelAnimationFrame(animationFrameId);
+    });
+  
+    video.addEventListener("ended", () => {
+      cancelAnimationFrame(animationFrameId);
+    });
+
+    // // Seek Video
+    seekBar.addEventListener("input", (e) => {
+      const seekTime = (e.target.value / 100) * video.duration;
+      video.currentTime = seekTime;
+    });
+
+    // // Display Video Duration
+    video.addEventListener("loadedmetadata", () => {
+      durationSpan.textContent = formatTime(video.duration);
+    });
+
+    // // Format Time (Helper Function)
+    function formatTime(time) {
+      const minutes = Math.floor(time / 60);
+      const seconds = Math.floor(time % 60);
+      return `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+    }
+  });
 
 // Lấy tất cả các phần tử có lớp 'swiper-container'
 const swiperContainers = document.querySelectorAll('.article_body_slide');
@@ -277,4 +399,19 @@ swiperContainers.forEach((container, index) => {
         // Thêm các tùy chọn khác nếu cần
     });
 });
+
+const posts = document.querySelectorAll('.Article');
+const videoSources = [];
+
+posts.forEach((post) =>{
+  const video = post.querySelector('video');
+  if(video){
+    const source = video.querySelector('source');
+    if(source && source.src){
+      videoSources.push(source.src);
+    }
+  }
+});
+
+
 });
