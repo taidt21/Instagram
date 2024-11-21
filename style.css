@@ -289,5 +289,6 @@ input[type='range']::-webkit-slider-thumb {
   width: 70px;
   height: 70px;
   display: none;
+  pointer-events: none;
   object-fit: contain;
 }
