@@ -242,6 +242,12 @@ const videos = document.querySelectorAll(".custom_video");
     entries.forEach((entry) => {
       const video = entry.target;
 
+      
+      // Kiểm tra nếu người dùng đã tương tác với video
+      if (video.dataset.userInteracted === 'true') {
+        // Bỏ qua video này
+        return;
+      }
       // Kiểm tra tỷ lệ hiển thị có đạt >= 70% không
       if (entry.intersectionRatio >= 0.7) {
         video.play(); // Phát video
@@ -271,20 +277,19 @@ videos.forEach((video) => {
     const currentTimeSpan = container.querySelector(".current-time");
     const durationSpan = container.querySelector(".duration");
     const playIcon = container.querySelector('.play_icon');
-    // Play/Pause button
-    const playPauseHandler = async () => {
-      if (video.paused) {
-        try {
-          await video.play();
-          playIcon.style.display = 'none';
-        } catch (error) {
-          console.error('Lỗi khi phát video:', error);
-        }
-      } else {
-        video.pause();
-        playIcon.style.display = 'block';
-      }
-    };
+     // Hàm xử lý Play/Pause
+  const playPauseHandler = (event) => {
+    // Đánh dấu rằng người dùng đã tương tác với video
+    if (video.paused) {
+      video.play();
+      video.dataset.userInteracted = 'false';
+      playIcon.style.display = 'none';
+    } else {
+      video.pause();
+      video.dataset.userInteracted = 'true';
+      playIcon.style.display = 'block';
+    }
+  };
     
     playPauseBtn.addEventListener("click", playPauseHandler);
     
