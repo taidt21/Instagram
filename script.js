@@ -233,34 +233,7 @@ articles.forEach(article => {
   }
 });
 
-// Lấy hostname hiện tại
-const currentHost = window.location.hostname;
-// Kiểm tra nếu đang chạy trên domain GitHub
-if (currentHost.includes("github.io")) {
-    // Lấy tất cả thẻ img
-    const imgElements = document.querySelectorAll("img");
-    
-    imgElements.forEach(img => {
-        // Lấy src hiện tại của thẻ img
-        const currentSrc = img.getAttribute("src");
-         // Kiểm tra nếu src không bắt đầu bằng 'http://' hoặc 'https://'
-        if (currentSrc && !currentSrc.match(/^https?:\/\//i)) {
-          // Thêm '/Instagram' vào trước src nếu chưa có
-          if (!currentSrc.startsWith("/Instagram")) {
-              img.setAttribute("src", "/Instagram" + currentSrc);
-          }
-      }
-    });
-    const vidElements = document.querySelectorAll("video");
-    vidElements.forEach(vid =>{
-      const currentSrc = vid.querySelector('source').getAttribute("src");
-      if(currentSrc && !currentSrc.match(/^https?:\/\//i)){
-        if(!currentSrc.startsWith("/Instagram")){
-          vid.querySelector('source').setAttribute("src","/Instagram" + currentSrc)
-        }
-      }
-    });
-}
+
 
 const videos = document.querySelectorAll(".custom_video");
  // IntersectionObserver setup
@@ -420,4 +393,34 @@ posts.forEach((post) =>{
 });
 
 
+
+
+// Lấy hostname hiện tại
+const currentHost = window.location.hostname;
+// Kiểm tra nếu đang chạy trên domain GitHub
+if (currentHost.includes("github.io")) {
+    // Lấy tất cả thẻ img
+    const imgElements = document.querySelectorAll("img");
+    
+    imgElements.forEach(img => {
+        // Lấy src hiện tại của thẻ img
+        const currentSrc = img.getAttribute("src");
+         // Kiểm tra nếu src không bắt đầu bằng 'http://' hoặc 'https://'
+        if (currentSrc && !currentSrc.match(/^https?:\/\//i)) {
+          // Thêm '/Instagram' vào trước src nếu chưa có
+          if (!currentSrc.startsWith("/Instagram")) {
+              img.setAttribute("src", "/Instagram" + currentSrc);
+          }
+      }
+    });
+    const vidElements = document.querySelectorAll("video");
+    vidElements.forEach(vid =>{
+      const currentSrc = vid.querySelector('source').getAttribute("src");
+      if(currentSrc && !currentSrc.match(/^https?:\/\//i)){
+        if(!currentSrc.startsWith("/Instagram")){
+          vid.querySelector('source').setAttribute("src","/Instagram" + currentSrc)
+        }
+      }
+    });
+}
 });
