@@ -299,16 +299,22 @@ videos.forEach((video) => {
     const durationSpan = container.querySelector(".duration");
     const playIcon = container.querySelector('.play_icon');
     // Play/Pause button
-    playPauseBtn.addEventListener("click", () => {
+    const playPauseHandler = async () => {
       if (video.paused) {
-        video.play();
-        playIcon.style.display = 'none'
+        try {
+          await video.play();
+          playIcon.style.display = 'none';
+        } catch (error) {
+          console.error('Lỗi khi phát video:', error);
+        }
       } else {
         video.pause();
-        playIcon.style.display = 'block'
+        playIcon.style.display = 'block';
       }
-    });
-
+    };
+    
+    playPauseBtn.addEventListener("click", playPauseHandler);
+    
     // Mute/Unmute button
     muteUnmuteBtn.addEventListener("click", () => {
       video.muted = !video.muted;
